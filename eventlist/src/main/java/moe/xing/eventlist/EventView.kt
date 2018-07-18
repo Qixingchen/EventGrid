@@ -27,11 +27,7 @@ class EventView : FrameLayout {
     fun replace(eventGroups: List<EventGroup>) {
         eventAdapter.replace(eventGroups)
 
-        val titles = mutableListOf<String>()
-        for (group in eventGroups) {
-            titles.add(group.groupTitle)
-        }
-        titleAdapter.replace(titles)
+        titleAdapter.replace(eventGroups.map { it.groupTitle }.toMutableList())
     }
 
     fun scrollToHour(hour: Int) {
@@ -39,6 +35,13 @@ class EventView : FrameLayout {
             binding.scrollView.scrollY = ((hour * config.hourHeight - 4) * context.resources.displayMetrics.density).toInt()
         }
     }
+
+    fun setClickListener(eventListener: ((Event) -> Unit)) {
+        eventAdapter.eventListener = eventListener
+    }
+
+    fun getEventRecyclerView(): RecyclerView = binding.eventGridRecyclerView
+    fun getTitleRecyclerView(): RecyclerView = binding.groupTitle
 
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)

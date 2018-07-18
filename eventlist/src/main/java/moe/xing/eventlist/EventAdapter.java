@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 import moe.xing.rvutils.BaseRecyclerViewAdapter;
 
 /**
@@ -15,6 +17,16 @@ import moe.xing.rvutils.BaseRecyclerViewAdapter;
 public class EventAdapter extends BaseRecyclerViewAdapter<EventGroup, EventAdapter.ViewHolder> {
     EventAdapter() {
         super(EventGroup.class);
+    }
+
+    private Function1<? super Event, Unit> eventListener;
+
+    public Function1<? super Event, Unit> getEventListener() {
+        return eventListener;
+    }
+
+    public void setEventListener(Function1<? super Event, Unit> eventListener) {
+        this.eventListener = eventListener;
     }
 
     @NonNull
@@ -47,6 +59,7 @@ public class EventAdapter extends BaseRecyclerViewAdapter<EventGroup, EventAdapt
             if (eventGroup != null) {
                 view.setList(eventGroup.getEvents());
             }
+            view.setOnEventClickListener(eventListener);
         }
     }
 }

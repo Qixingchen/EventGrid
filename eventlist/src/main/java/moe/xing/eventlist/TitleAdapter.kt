@@ -2,17 +2,18 @@ package moe.xing.eventlist
 
 import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView
+import android.text.SpannableString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import moe.xing.eventlist.databinding.ItemTitleBinding
+import moe.xing.rvutils.BaseRecyclerViewAdapter
 
 /**
  * Created by Qi Xingchen on 2018-7-16.
  */
-open class TitleAdapter : RecyclerView.Adapter<ViewHolder>() {
+open class TitleAdapter : BaseRecyclerViewAdapter<SpannableString, ViewHolder>(SpannableString::class.java) {
 
-    val titles = mutableListOf<String>()
 
     fun widthChange() {
         notifyDataSetChanged()
@@ -23,17 +24,13 @@ open class TitleAdapter : RecyclerView.Adapter<ViewHolder>() {
         return ViewHolder(binding.root)
     }
 
-    override fun getItemCount(): Int {
-        return titles.size
-    }
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindVH(titles.getOrElse(position) { "" })
+        holder.bindVH(datas.get(position) ?: SpannableString(""))
     }
 
-    fun replace(newTitle: MutableList<String>) {
-        titles.clear()
-        titles.addAll(newTitle)
+    fun replace(newTitles: MutableList<SpannableString>) {
+        datas.clear()
+        datas.addAll(newTitles)
         notifyDataSetChanged()
     }
 
@@ -47,7 +44,7 @@ open class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         mBinding = DataBindingUtil.findBinding(itemView)
     }
 
-    fun bindVH(title: String) {
+    fun bindVH(title: SpannableString) {
         mBinding?.title = title
         mBinding?.config = EventView.config
     }

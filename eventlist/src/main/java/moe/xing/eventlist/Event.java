@@ -6,6 +6,7 @@ import android.databinding.PropertyChangeRegistry;
 import android.graphics.Color;
 import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
+import android.text.SpannableString;
 
 import java.util.Date;
 
@@ -17,7 +18,7 @@ public class Event implements Observable {
     /**
      * 事件标题
      */
-    private String title;
+    private SpannableString title;
     /**
      * 事件开始时间(只判断时间)
      */
@@ -45,11 +46,16 @@ public class Event implements Observable {
 
 
     @Bindable
-    public String getTitle() {
+    public SpannableString getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
+        this.title = new SpannableString(title);
+        notifyChange(BR.title);
+    }
+
+    public void setTitle(SpannableString title) {
         this.title = title;
         notifyChange(BR.title);
     }

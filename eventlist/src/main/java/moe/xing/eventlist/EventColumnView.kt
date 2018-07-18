@@ -13,7 +13,6 @@ import kotlin.math.roundToInt
  */
 open class EventColumnView(context: Context) : FrameLayout(context) {
     private val density = context.resources.displayMetrics.density
-    private var events: MutableList<Event> = mutableListOf()
     @Suppress("MemberVisibilityCanBePrivate")
     var onEventClickListener: ((Event) -> Unit)? = null
     @Suppress("MemberVisibilityCanBePrivate")
@@ -31,9 +30,8 @@ open class EventColumnView(context: Context) : FrameLayout(context) {
 
     fun setList(events: List<Event>) {
         removeAllViews()
-        this.events = events.toMutableList()
         val inflater = LayoutInflater.from(context)
-        events.forEachIndexed { _, event ->
+        events.sortedBy { it.start }.forEach { event ->
             val binding = DataBindingUtil.inflate<ItemEventBinding>(inflater, R.layout.item_event, null, false)
             binding.event = event
             binding.root.setOnClickListener {
@@ -67,10 +65,10 @@ data class TimeParams(
 ) {
     companion object {
         fun from(y: Float, density: Float): TimeParams {
-            val roundY = (y * 10 / density).roundToInt() / 10 - 4
+            val roundY = (y * 10 / density).roundToInt() / 10 - 6
             return TimeParams(roundY / EventView.config.hourHeight, (roundY % EventView.config.hourHeight) * EventView.config.hourHeight / 60)
         }
     }
 
-    val fromY = ((hour * EventView.config.hourHeight) + (min * EventView.config.hourHeight / 60)) + 4
+    val fromY = ((hour * EventView.config.hourHeight) + (min * EventView.config.hourHeight / 60)) + 6
 }

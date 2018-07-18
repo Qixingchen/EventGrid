@@ -3,6 +3,7 @@ package moe.xing.eventlist;
 import android.databinding.Bindable;
 import android.databinding.Observable;
 import android.databinding.PropertyChangeRegistry;
+import android.text.SpannableString;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,17 +12,22 @@ import java.util.List;
  * Created by Qi Xingchen on 2018-7-17.
  */
 public class EventGroup implements Observable {
-    private String groupTitle;
+    private SpannableString groupTitle;
     private List<Event> events = new ArrayList<>();
     private transient PropertyChangeRegistry propertyChangeRegistry = new PropertyChangeRegistry();
 
 
     @Bindable
-    public String getGroupTitle() {
+    public SpannableString getGroupTitle() {
         return groupTitle;
     }
 
     public void setGroupTitle(String groupTitle) {
+        this.groupTitle = new SpannableString(groupTitle);
+        notifyChange(BR.groupTitle);
+    }
+
+    public void setGroupTitle(SpannableString groupTitle) {
         this.groupTitle = groupTitle;
         notifyChange(BR.groupTitle);
     }
