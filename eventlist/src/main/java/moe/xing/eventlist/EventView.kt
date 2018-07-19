@@ -59,7 +59,7 @@ class EventView : FrameLayout {
             override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 binding.eventGridRecyclerView.removeOnScrollListener(scrollListeners[1])
-                binding.eventGridRecyclerView.scrollBy(dx, dy)
+                binding.eventGridRecyclerView.scrollBy(recyclerView!!.computeHorizontalScrollOffset() - binding.eventGridRecyclerView.computeHorizontalScrollOffset(), 0)
                 binding.eventGridRecyclerView.addOnScrollListener(scrollListeners[1])
             }
         }
@@ -67,7 +67,7 @@ class EventView : FrameLayout {
             override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 binding.groupTitle.removeOnScrollListener(scrollListeners[0])
-                binding.groupTitle.scrollBy(dx, dy)
+                binding.groupTitle.scrollBy(recyclerView!!.computeHorizontalScrollOffset() - binding.groupTitle.computeHorizontalScrollOffset(), 0)
                 binding.groupTitle.addOnScrollListener(scrollListeners[0])
             }
         }

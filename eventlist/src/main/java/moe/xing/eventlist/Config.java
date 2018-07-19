@@ -12,7 +12,6 @@ public class Config implements Observable {
     private int titleHeight = 40;
     private int hourHeight = 40;
     private int groupWidth = 60;
-    private int eventTextSize = 12;
     private transient PropertyChangeRegistry propertyChangeRegistry = new PropertyChangeRegistry();
 
 
@@ -57,16 +56,6 @@ public class Config implements Observable {
         if (propertyChangeRegistry != null) {
             propertyChangeRegistry.remove(callback);
         }
-    }
-
-    @Bindable
-    public int getEventTextSize() {
-        return eventTextSize;
-    }
-
-    public void setEventTextSize(int eventTextSize) {
-        this.eventTextSize = eventTextSize;
-        notifyChange(BR.eventTextSize);
     }
 
     @Bindable
