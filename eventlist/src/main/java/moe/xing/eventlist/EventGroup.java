@@ -11,7 +11,7 @@ import java.util.List;
  * Created by Qi Xingchen on 2018-7-17.
  */
 public class EventGroup implements Observable {
-    private CharSequence groupTitle;
+    private CharSequence groupTitle = "";
     private List<Event> events = new ArrayList<>();
     private transient PropertyChangeRegistry propertyChangeRegistry = new PropertyChangeRegistry();
 

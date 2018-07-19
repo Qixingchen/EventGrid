@@ -28,12 +28,15 @@ open class TitleAdapter : BaseRecyclerViewAdapter<CharSequence, ViewHolder>(Char
         holder.bindVH(datas.get(position) ?: SpannableString(""))
     }
 
-    fun replace(newTitles: MutableList<CharSequence>) {
+    fun replace(newTitles: List<CharSequence>) {
         datas.clear()
         datas.addAll(newTitles)
         notifyDataSetChanged()
     }
 
+    override fun rvAreItemsTheSame(item1: CharSequence?, item2: CharSequence?): Boolean {
+        return false
+    }
 }
 
 open class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

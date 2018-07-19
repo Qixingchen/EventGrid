@@ -73,11 +73,12 @@ class MainActivity : AppCompatActivity() {
             events.add(event3)
         }
 
-        val groups = mutableListOf(group1, group2, group3)
+        val groups = listOf(group1, group2, group3, EventGroup(), EventGroup(), EventGroup(), EventGroup(), EventGroup(), EventGroup())
 
         eventView.replace(groups)
         eventView.scrollToHour(9)
         eventView.getEventRecyclerView().addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL))
+        eventView.getTitleRecyclerView().addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL))
         EventView.config.hourHeight = 60
         EventView.config.titleHeight = 60
         EventView.config.groupWidth = 90

@@ -15,7 +15,7 @@ public class DataBindingAdapter {
      */
     @BindingAdapter({"layout_height"})
     public static void setHeight(View view, int height) {
-        view.getLayoutParams().height = Math.round(height * view.getContext().getResources().getDisplayMetrics().density + 0.5f);
+        view.getLayoutParams().height = Math.round(height * view.getContext().getResources().getDisplayMetrics().density);
     }
 
     /**
@@ -23,7 +23,7 @@ public class DataBindingAdapter {
      */
     @BindingAdapter({"layout_width"})
     public static void setWidth(View view, int width) {
-        view.getLayoutParams().width = Math.round(width * view.getContext().getResources().getDisplayMetrics().density + 0.5f);
+        view.getLayoutParams().width = Math.round(width * view.getContext().getResources().getDisplayMetrics().density);
     }
 
     /**
@@ -35,7 +35,7 @@ public class DataBindingAdapter {
         ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
 
         marginParams.setMargins(marginParams.leftMargin,
-                Math.round(marginTop * view.getContext().getResources().getDisplayMetrics().density + 0.5f),
+                Math.round(marginTop * view.getContext().getResources().getDisplayMetrics().density),
                 marginParams.rightMargin,
                 marginParams.bottomMargin);
     }

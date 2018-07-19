@@ -27,7 +27,7 @@ class EventView : FrameLayout {
     fun replace(eventGroups: List<EventGroup>) {
         eventAdapter.replace(eventGroups)
 
-        titleAdapter.replace(eventGroups.map { it.groupTitle }.toMutableList())
+        titleAdapter.replace(eventGroups.map { it.groupTitle }.toList())
     }
 
     fun scrollToHour(hour: Int) {
