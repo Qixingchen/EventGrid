@@ -18,9 +18,7 @@ open class EventColumnView(context: Context) : FrameLayout(context) {
     @Suppress("MemberVisibilityCanBePrivate")
     var widthDp = EventView.config.groupWidth
         set(value) {
-            layoutParams = FrameLayout.LayoutParams((value * density).toInt(), FrameLayout.LayoutParams.MATCH_PARENT).apply {
-                this.setMargins(density.toInt(), 0, density.toInt(), 0)
-            }
+            layoutParams = FrameLayout.LayoutParams((value * density).toInt(), FrameLayout.LayoutParams.MATCH_PARENT)
             requestLayout()
         }
 
