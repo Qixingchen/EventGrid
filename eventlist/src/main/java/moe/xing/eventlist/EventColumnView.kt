@@ -63,10 +63,10 @@ data class TimeParams(
 ) {
     companion object {
         fun from(y: Float, density: Float): TimeParams {
-            val roundY = (y * 10 / density).roundToInt() / 10 - 6
+            val roundY = (y * 10 / density).roundToInt() / 10
             return TimeParams(roundY / EventView.config.hourHeight, (roundY % EventView.config.hourHeight) * EventView.config.hourHeight / 60)
         }
     }
 
-    val fromY = ((hour * EventView.config.hourHeight) + (min * EventView.config.hourHeight / 60)) + 6
+    val fromY = ((hour * EventView.config.hourHeight) + (min * EventView.config.hourHeight / 60))
 }
