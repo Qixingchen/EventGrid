@@ -8,7 +8,7 @@
 
         <variable
             name="title"
-            type="android.text.SpannableString"/>
+            type="CharSequence"/>
 
         <variable
             name="config"

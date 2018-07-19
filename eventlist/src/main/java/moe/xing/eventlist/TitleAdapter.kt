@@ -12,7 +12,7 @@ import moe.xing.rvutils.BaseRecyclerViewAdapter
 /**
  * Created by Qi Xingchen on 2018-7-16.
  */
-open class TitleAdapter : BaseRecyclerViewAdapter<SpannableString, ViewHolder>(SpannableString::class.java) {
+open class TitleAdapter : BaseRecyclerViewAdapter<CharSequence, ViewHolder>(CharSequence::class.java) {
 
 
     fun widthChange() {
@@ -28,7 +28,7 @@ open class TitleAdapter : BaseRecyclerViewAdapter<SpannableString, ViewHolder>(S
         holder.bindVH(datas.get(position) ?: SpannableString(""))
     }
 
-    fun replace(newTitles: MutableList<SpannableString>) {
+    fun replace(newTitles: MutableList<CharSequence>) {
         datas.clear()
         datas.addAll(newTitles)
         notifyDataSetChanged()
@@ -44,7 +44,7 @@ open class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         mBinding = DataBindingUtil.findBinding(itemView)
     }
 
-    fun bindVH(title: SpannableString) {
+    fun bindVH(title: CharSequence) {
         mBinding?.title = title
         mBinding?.config = EventView.config
     }
