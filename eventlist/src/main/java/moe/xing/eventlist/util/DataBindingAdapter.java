@@ -1,10 +1,11 @@
 package moe.xing.eventlist.util;
 
-import android.databinding.BindingAdapter;
-import android.support.annotation.ColorInt;
-import android.support.annotation.DrawableRes;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
+import androidx.databinding.BindingAdapter;
 
 /**
  * Created by Qi Xingchen on 2018-7-14.

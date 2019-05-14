@@ -1,9 +1,10 @@
 package moe.xing.eventlist
 
 import android.content.Context
-import android.databinding.DataBindingUtil
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import androidx.databinding.DataBindingUtil
 import moe.xing.eventlist.databinding.ItemEventBinding
 import java.util.*
 import kotlin.math.roundToInt
@@ -18,8 +19,10 @@ open class EventColumnView(context: Context) : FrameLayout(context) {
     @Suppress("MemberVisibilityCanBePrivate")
     var widthDp = EventView.config.groupWidth
         set(value) {
-            layoutParams = FrameLayout.LayoutParams((value * density).toInt(), FrameLayout.LayoutParams.MATCH_PARENT)
+            layoutParams = LayoutParams(Math.round(TypedValue.applyDimension(
+                    TypedValue.COMPLEX_UNIT_DIP, value.toFloat(), context.resources.displayMetrics)), LayoutParams.MATCH_PARENT)
             requestLayout()
+            field = value
         }
 
     init {
@@ -42,10 +45,10 @@ open class EventColumnView(context: Context) : FrameLayout(context) {
                 startParams.fromY to endParams.fromY - startParams.fromY
             }
 
-            val marginParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, (y * density).toInt()).apply {
+            val marginParams = LayoutParams(LayoutParams.MATCH_PARENT, (y * density).toInt()).apply {
                 topMargin = (fromY * density).toInt()
             }
-            addView(binding.root, FrameLayout.LayoutParams(marginParams))
+            addView(binding.root, LayoutParams(marginParams))
         }
 
 

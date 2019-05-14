@@ -1,12 +1,12 @@
 package moe.xing.eventlist
 
 import android.content.Context
-import android.databinding.DataBindingUtil
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import moe.xing.eventlist.databinding.EventListViewBinding
 
 /**
@@ -56,22 +56,23 @@ class EventView : FrameLayout {
 
         val scrollListeners = arrayOfNulls<RecyclerView.OnScrollListener>(2)
         scrollListeners[0] = object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
-                binding.eventGridRecyclerView.removeOnScrollListener(scrollListeners[1])
-                binding.eventGridRecyclerView.scrollBy(recyclerView!!.computeHorizontalScrollOffset() - binding.eventGridRecyclerView.computeHorizontalScrollOffset(), 0)
-                binding.eventGridRecyclerView.addOnScrollListener(scrollListeners[1])
+                binding.eventGridRecyclerView.removeOnScrollListener(scrollListeners[1]!!)
+                binding.eventGridRecyclerView.scrollBy(recyclerView.computeHorizontalScrollOffset() - binding.eventGridRecyclerView.computeHorizontalScrollOffset(), 0)
+                binding.eventGridRecyclerView.addOnScrollListener(scrollListeners[1]!!)
             }
         }
         scrollListeners[1] = object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
-                binding.groupTitle.removeOnScrollListener(scrollListeners[0])
-                binding.groupTitle.scrollBy(recyclerView!!.computeHorizontalScrollOffset() - binding.groupTitle.computeHorizontalScrollOffset(), 0)
-                binding.groupTitle.addOnScrollListener(scrollListeners[0])
+                binding.groupTitle.removeOnScrollListener(scrollListeners[0]!!)
+                binding.groupTitle.scrollBy(recyclerView.computeHorizontalScrollOffset() - binding.groupTitle.computeHorizontalScrollOffset(), 0)
+                binding.groupTitle.addOnScrollListener(scrollListeners[0]!!)
             }
         }
-        binding.groupTitle.addOnScrollListener(scrollListeners[0])
-        binding.eventGridRecyclerView.addOnScrollListener(scrollListeners[1])
+        binding.groupTitle.addOnScrollListener(scrollListeners[0]!!)
+        binding.eventGridRecyclerView.addOnScrollListener(scrollListeners[1]!!)
     }
 }

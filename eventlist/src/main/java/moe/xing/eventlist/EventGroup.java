@@ -1,11 +1,11 @@
 package moe.xing.eventlist;
 
-import android.databinding.Bindable;
-import android.databinding.Observable;
-import android.databinding.PropertyChangeRegistry;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.databinding.Bindable;
+import androidx.databinding.Observable;
+import androidx.databinding.PropertyChangeRegistry;
 
 /**
  * Created by Qi Xingchen on 2018-7-17.

@@ -1,13 +1,14 @@
 package moe.xing.eventlist;
 
-import android.databinding.Bindable;
-import android.databinding.Observable;
-import android.databinding.PropertyChangeRegistry;
 import android.graphics.Color;
-import android.support.annotation.ColorInt;
-import android.support.annotation.DrawableRes;
 
 import java.util.Date;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
+import androidx.databinding.Bindable;
+import androidx.databinding.Observable;
+import androidx.databinding.PropertyChangeRegistry;
 
 /**
  * Created by Qi Xingchen on 2018-7-17.

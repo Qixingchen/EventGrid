@@ -1,11 +1,10 @@
 package moe.xing.eventlist
 
-import android.databinding.DataBindingUtil
-import android.support.v7.widget.RecyclerView
 import android.text.SpannableString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import moe.xing.eventlist.databinding.ItemTitleBinding
 import moe.xing.rvutils.BaseRecyclerViewAdapter
 
@@ -39,7 +38,7 @@ open class TitleAdapter : BaseRecyclerViewAdapter<CharSequence, ViewHolder>(Char
     }
 }
 
-open class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+open class ViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
 
     private var mBinding: ItemTitleBinding? = null
 

@@ -2,9 +2,8 @@ package moe.xing.eventlistdemo
 
 import android.graphics.Color
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.DividerItemDecoration
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import moe.xing.baseutils.Init
 import moe.xing.baseutils.utils.DateUtils
 import moe.xing.eventlist.Event
@@ -77,8 +76,8 @@ class MainActivity : AppCompatActivity() {
 
         eventView.replace(groups)
         eventView.scrollToHour(9)
-        eventView.getEventRecyclerView().addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL))
-        eventView.getTitleRecyclerView().addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL))
+        eventView.getEventRecyclerView().addItemDecoration(androidx.recyclerview.widget.DividerItemDecoration(this, androidx.recyclerview.widget.DividerItemDecoration.HORIZONTAL))
+        eventView.getTitleRecyclerView().addItemDecoration(androidx.recyclerview.widget.DividerItemDecoration(this, androidx.recyclerview.widget.DividerItemDecoration.HORIZONTAL))
         EventView.config.hourHeight = 60
         EventView.config.titleHeight = 60
         EventView.config.groupWidth = 90
