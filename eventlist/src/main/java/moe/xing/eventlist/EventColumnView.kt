@@ -50,10 +50,11 @@ open class EventColumnView(context: Context) : FrameLayout(context) {
                 startParams.fromY to endParams.fromY - startParams.fromY
             }
 
-            val width = (widthDp * density / sameTimeList.size).toInt()
+            val width = ((widthDp / sameTimeList.size - 1) * density).toInt()
             val marginParams = LayoutParams(width, (y * density).toInt()).apply {
                 topMargin = (fromY * density).toInt()
-                leftMargin = width * sameTimeList.indexOf(event)
+                leftMargin = width * sameTimeList.indexOf(event) + (TypedValue.applyDimension(
+                        TypedValue.COMPLEX_UNIT_DIP, 1.toFloat(), context.resources.displayMetrics)).toInt() * (sameTimeList.indexOf(event) + 1)
             }
             addView(binding.root, LayoutParams(marginParams))
         }
