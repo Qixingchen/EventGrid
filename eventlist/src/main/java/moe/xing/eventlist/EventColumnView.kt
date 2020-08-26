@@ -14,8 +14,10 @@ import kotlin.math.roundToInt
  */
 open class EventColumnView(context: Context) : FrameLayout(context) {
     private val density = context.resources.displayMetrics.density
+
     @Suppress("MemberVisibilityCanBePrivate")
     var onEventClickListener: ((Event) -> Unit)? = null
+
     @Suppress("MemberVisibilityCanBePrivate")
     var widthDp = EventView.config.groupWidth
         set(value) {
@@ -39,14 +41,19 @@ open class EventColumnView(context: Context) : FrameLayout(context) {
                 onEventClickListener?.invoke(event)
             }
 
+            // find same time event
+            val sameTimeList = events.sortedBy { it.start }.filter { eventToCompare -> event.start.time.coerceAtLeast(eventToCompare.start.time) < event.end.time.coerceAtMost(eventToCompare.end.time) }
+
             val (fromY, y) = run {
                 val startParams = getParams(event.start)
                 val endParams = getParams(event.end)
                 startParams.fromY to endParams.fromY - startParams.fromY
             }
 
-            val marginParams = LayoutParams(LayoutParams.MATCH_PARENT, (y * density).toInt()).apply {
+            val width = (widthDp * density / sameTimeList.size).toInt()
+            val marginParams = LayoutParams(width, (y * density).toInt()).apply {
                 topMargin = (fromY * density).toInt()
+                leftMargin = width * sameTimeList.indexOf(event)
             }
             addView(binding.root, LayoutParams(marginParams))
         }

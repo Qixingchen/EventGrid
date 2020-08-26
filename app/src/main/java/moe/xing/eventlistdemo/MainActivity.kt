@@ -32,22 +32,22 @@ class MainActivity : AppCompatActivity() {
             setTitle("test2")
             backgroundColor = Color.argb(255, 45, 145, 154)
             start = DateUtils.parse("11:45", "HH:mm")
-            end = DateUtils.parse("13:00", "HH:mm")
+            end = DateUtils.parse("13:45", "HH:mm")
 
         }
 
         val event3 = Event().apply {
             setTitle("test3")
             backgroundColor = Color.argb(255, 141, 145, 154)
-            start = DateUtils.parse("10:00", "HH:mm")
-            end = DateUtils.parse("12:00", "HH:mm")
+            start = DateUtils.parse("11:45", "HH:mm")
+            end = DateUtils.parse("13:45", "HH:mm")
         }
 
         val event4 = Event().apply {
             setTitle("test4")
             backgroundColor = Color.argb(80, 120, 0, 0)
-            start = DateUtils.parse("16:00", "HH:mm")
-            end = DateUtils.parse("18:00", "HH:mm")
+            start = DateUtils.parse("11:45", "HH:mm")
+            end = DateUtils.parse("13:45", "HH:mm")
 
         }
 
@@ -62,6 +62,7 @@ class MainActivity : AppCompatActivity() {
             setGroupTitle("group2")
             events.add(event1)
             events.add(event2)
+            events.add(event3)
             events.add(event4)
         }
 
@@ -69,7 +70,7 @@ class MainActivity : AppCompatActivity() {
             setGroupTitle("group3")
             events.add(event4)
             events.add(event2)
-            events.add(event3)
+            events.add(event1)
         }
 
         val groups = listOf(group1, group2, group3, EventGroup(), EventGroup(), EventGroup(), EventGroup(), EventGroup(), EventGroup())
