@@ -44,6 +44,10 @@ open class EventColumnView(context: Context) : FrameLayout(context) {
             // find same time event
             val sameTimeList = events.sortedBy { it.start }.filter { eventToCompare -> event.start.time.coerceAtLeast(eventToCompare.start.time) < event.end.time.coerceAtMost(eventToCompare.end.time) }
 
+            if (sameTimeList.isEmpty()) {
+                return@forEach
+            }
+
             val (fromY, y) = run {
                 val startParams = getParams(event.start)
                 val endParams = getParams(event.end)
