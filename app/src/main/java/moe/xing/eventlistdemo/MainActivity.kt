@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
             backgroundColor = Color.argb(255, 141, 145, 154)
             start = DateUtils.parse("11:45", "HH:mm")
             end = DateUtils.parse("13:45", "HH:mm")
+            isShowTopLine = true
         }
 
         val event4 = Event().apply {

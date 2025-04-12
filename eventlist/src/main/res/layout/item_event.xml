@@ -7,6 +7,8 @@
 
     <data>
 
+        <import type="android.view.View"/>
+
         <variable
             name="event"
             type="moe.xing.eventlist.Event"/>
@@ -24,6 +26,14 @@
         android:padding="1dp"
         app:backgroundColor="@{event.backgroundColor}"
         app:backgroundRes="@{event.backgroundRes}">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:id="@+id/top_line"
+            android:visibility="@{event.showTopLine? View.VISIBLE : View.GONE}"
+            android:background="@{event.topLineColor}"
+            />
 
         <TextView
             android:layout_width="match_parent"

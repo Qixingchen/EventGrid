@@ -2,13 +2,13 @@ package moe.xing.eventlist;
 
 import android.graphics.Color;
 
-import java.util.Date;
-
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 import androidx.databinding.Bindable;
 import androidx.databinding.Observable;
 import androidx.databinding.PropertyChangeRegistry;
+
+import java.util.Date;
 
 /**
  * Created by Qi Xingchen on 2018-7-17.
@@ -42,6 +42,15 @@ public class Event implements Observable {
      */
     @ColorInt
     private int textColor = Color.argb(255, 102, 204, 255);
+
+    private boolean showTopLine = false;
+    /**
+     * 顶部线颜色
+     */
+    @ColorInt
+    private int topLineColor = Color.argb(255, 255, 31, 0);
+
+
     private transient PropertyChangeRegistry propertyChangeRegistry = new PropertyChangeRegistry();
 
 
@@ -126,5 +135,26 @@ public class Event implements Observable {
     public void setTextColor(int textColor) {
         this.textColor = textColor;
         notifyChange(BR.textColor);
+    }
+
+
+    @Bindable
+    public boolean isShowTopLine() {
+        return showTopLine;
+    }
+
+    public void setShowTopLine(boolean showTopLine) {
+        this.showTopLine = showTopLine;
+        notifyChange(BR.showTopLine);
+    }
+
+    @Bindable
+    public int getTopLineColor() {
+        return topLineColor;
+    }
+
+    public void setTopLineColor(int topLineColor) {
+        this.topLineColor = topLineColor;
+        notifyChange(BR.topLineColor);
     }
 }
